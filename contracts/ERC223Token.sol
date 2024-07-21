@@ -13,6 +13,7 @@ contract ERC223Token is ERC20 {
     }
 
     function transfer(address recipient, uint256 amount, bytes calldata data) public returns (bool) {
+        require(amount > 0, "ERC20: transfer amount must be greater than zero");
         _transfer(_msgSender(), recipient, amount);
         emit Transfer(_msgSender(), recipient, amount, data);
 
